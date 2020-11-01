@@ -1,4 +1,4 @@
-package io.github.biligoldenwater.cppautocompiletool;
+package indi.biligoldenwater.cppautocompiletool;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -7,17 +7,18 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 public class CppAutoCompileTool extends Application {
-    private static Stage stage = null;
-    private static String sourceFile = "";
+    private static Stage mainStage;
+    private static String sourceFile;
 
     @Override
-    public void start(Stage primaryStage) throws Exception{
-        stage = primaryStage;
+    public void start(Stage mainStage) throws Exception{
+        CppAutoCompileTool.mainStage = mainStage;
 
         Parent root = FXMLLoader.load(getClass().getResource("CppAutoCompileTool.fxml"));
-        primaryStage.setTitle("Cpp Auto Compile Tool");
-        primaryStage.setScene(new Scene(root, 535, 355));
-        primaryStage.show();
+        mainStage.setTitle("Cpp Auto Compile Tool");
+        mainStage.setScene(new Scene(root));
+        mainStage.setResizable(false);
+        mainStage.show();
     }
 
     public static void main(String[] args) {
@@ -33,6 +34,6 @@ public class CppAutoCompileTool extends Application {
     }
 
     public static Stage getStage(){
-        return stage;
+        return mainStage;
     }
 }
